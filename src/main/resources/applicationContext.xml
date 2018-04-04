@@ -18,7 +18,7 @@
        ">
 
 	<context:property-placeholder
-		location="classpath:dbConfig.properties" />
+		location="classpath:dbConfig.properties,classpath:ws.properties" />
 
 	<context:component-scan base-package="com.atguigu.service"
 		use-default-filters="false">
@@ -41,6 +41,10 @@
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.atguigu.mapper" />
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean" />
+	</bean>
+	<bean id="loginServerInf" class="com.atguigu.util.MyWsFactoryBean">
+		<property name="url" value="${login_url}"></property>
+		<property name="t" value="com.atguigu.server.LoginServerInf"></property>
 	</bean>
 
 </beans>
